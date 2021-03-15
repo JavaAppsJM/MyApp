@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="received_msg">Received message:</string>
+    <string name="edit_reply">Edit Reply Message</string>
+    <string name="text_reply">Reply message</string>
+    <string name="reply_message">Reply Message</string>
+    <string name="reply_button">Reply</string>
+</resources>
