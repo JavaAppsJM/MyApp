@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     public static final int TEXT_REQUEST = 1;
     private TextView mReplyHeadTextView;
     private TextView mReplyTextView;
@@ -25,6 +26,65 @@ public class MainActivity extends AppCompatActivity {
         mReplyHeadTextView = findViewById(R.id.labelAct1);
         mReplyTextView = findViewById(R.id.reply_msg);
         mMsgToBeSend = findViewById(R.id.editTextAct1);
+
+        if (savedInstanceState != null){
+            boolean isVisiblaa = savedInstanceState.getBoolean("reply_visible");
+
+            if (isVisiblaa){
+                mReplyHeadTextView.setVisibility(View.VISIBLE);
+                mReplyTextView.setText(savedInstanceState.getString("reply_text"));
+                mReplyTextView.setVisibility(View.VISIBLE);
+            }
+        }
+
+        Log.d(LOG_TAG, "------------------");
+        Log.d(LOG_TAG, "onCreate");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        if (mReplyHeadTextView.getVisibility() == View.VISIBLE){
+            outState.putBoolean("reply_visible", true);
+            outState.putString("reply_text", mReplyTextView.getText().toString());
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(LOG_TAG, "onStart");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(LOG_TAG, "onStop");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(LOG_TAG, "onPause");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "onResume");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(LOG_TAG, "onDestroy");
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        Log.d(LOG_TAG, "onRestart");
     }
 
     public void sendMessage(View view){
